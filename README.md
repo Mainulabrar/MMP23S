@@ -1,13 +1,13 @@
 # MMP23S, Math Methods in Physics. |||, Spring 2023
 
 **Name**: *Md Mainul Abrar*<br>
-School ID: <your ID>
-Email: <your email>
-Department: Department of <your department>
-University: The University of <your university>
-Level: <undergraduate or graduate> - <Freshman (1st year) / Sophomore (2nd year) / Junior (3rd year) / Senior (4th year) / Dinosaur (5th year and above) >
-Position Title: Student
-Course Webpage: [This is the course website](https://www.cdslab.org)
+School ID: 1002090419<br>
+Email: mxa0419@mavs.uta.edu<br>
+Department: Department of Physics<br>
+University: The University of Texas at Arlington<br>
+Level: Graduate Freshman (1st year)<br>
+Position Title: Student<br>
+Course Webpage: [This is the course website](https://www.cdslab.org)<br>
 Photo (ATTN: should display your photo, not mine!):
 ![Md Mainul Abrar's Photo](image link)
 
