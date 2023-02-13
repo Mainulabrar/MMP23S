@@ -9,7 +9,7 @@
 **Position Title**: Student<br>
 **Course Webpage**: [This is the course website](https://www.cdslab.org)<br>
 **Photo** (ATTN: should display your photo, not mine!):
-![Md Mainul Abrar's Photo](image link)
+[Md Mainul Abrar's Photo](https://drive.google.com/file/d/1ZREexKvBYxxI7dhvaPO33t4tmXYq2mIN/view?usp=drivesdk)
 
 ---
 
