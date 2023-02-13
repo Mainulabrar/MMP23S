@@ -25,4 +25,10 @@ This directory contains all my quiz submissions, each of which is a folder prope
 -   exam: (the exam hyperlink should take the reader to the exams folder)
 This directory contains all my exam submissions, each of which is a folder properly named with exam name or number, containing the exam submission.
 
->I have not failed
+For questions and troubleshooting, please contact:
+
+Md Mainul Abrar 
+Mxa0419@mavs.uta.edu
+>I have not failed,I’ve just found 10,000 ways that won’t work.
+Thomas A. Edison
+
