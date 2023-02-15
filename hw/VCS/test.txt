@@ -1,1 +1,2 @@
-This is some example text for branch tes1
+
+This is some example text for branch tes1 and test2 branches combined
