@@ -45,3 +45,28 @@ number of nan values are 16777216.
 Infinity = all the exponent 1
 subnormal = all exponent are zero but signifants are all not zero.
 
+14.
+Because they are highly sensative to initial condition and often nonlinear and complex.
+
+15.
+Mutable objects' value can be changed after creation but immutable objects' value can not be changed after creation.
+
+16.
+
+17.
+
+18.
+
+19.
+
+20.
+
+21. 
+Because lists creates a lot of memory for all the indices when they are created. And always reading and writing with such large chunks of memory is slow. That is why lists are unsuitable.
+
+22.
+i. Conditional Branching
+ii. Looping
+iii. Ability to manipulate memory.
+
+
