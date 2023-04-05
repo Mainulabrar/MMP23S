@@ -54,6 +54,7 @@ Mutable objects' value can be changed after creation but immutable objects' valu
 16.
 
 17.
+Fortran will ran faster. Because it has a different memory access pattern (column major) than C.
 
 18.
 
