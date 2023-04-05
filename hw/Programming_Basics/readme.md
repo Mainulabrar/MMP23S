@@ -587,11 +587,24 @@ fclose(fid_out);
 
 17.
 ```python
-Consider the following web-page address https://cdslaborg.github.io/DataRepos_SwiftBat/index.html. This is a data table in HTML language containing data from the NASA Swift satellite. Each row in this table represents information about a Gamma-Ray Burst (GRB) detection that Swift has made in the past years.
+import requests
+from bs4 import BeautifulSoup
 
-Each event is labeled by an ID that appears in the first column of the table named GRB (Trig#). Write a code that (downloads) and reads this HTML page from the web, then extracts the IDs of GRB events from the first column (IDs are the numbers that appear in parentheses in the first column). Then, writes the extracted IDs to an external output file on your system with the name nasa.swift.grb.ids.txt.
+# Download the HTML page
+url = 'https://cdslaborg.github.io/DataRepos_SwiftBat/index.html'
+response = requests.get(url)
 
-Note that the IDs must be outputted as strings to preserve the preceding zeros. Each ID must appear on a separate line in the output file.
+# Parse the HTML page using BeautifulSoup
+soup = BeautifulSoup(response.content, 'html.parser')
+table = soup.find('table', {'id': 'grb_table'})
+
+# Extract the GRB IDs from the first column of the table
+ids = [row.find_all('td')[0].text.strip()[1:-1] for row in table.find_all('tr')[1:]]
+
+# Write the IDs to an external output file
+with open('nasa.swift.grb.ids.txt', 'w') as f:
+    for id in ids:
+        f.write(id + '\n')
 ```
 
 18.
