@@ -1,9 +1,15 @@
 1.
 i) This implies only certain real numbers can be stored in the computers. All real numbers can not be stored as they are continuous.<br>
-ii) real32 can present  -3.4 x 10^38 to 3.4 x 10^38 real bumbers.
-    real64 can present -1.8 x 10^308 to 1.8 x 10^308 real numbers
-    real128 can represent -1.2 x 10^4932 to 1.2 x 10^4932 real numbers
-ii)
+ii) real32 can present  4,278,190,080 real numbers.
+    real64 can present 1.84467441E+19 real numbers
+    real128 can represent 3.40282367E+38 real numbers
+ii) For real32 it is 1,073,741,824<br>
+    For real64 it is 4.61168602E+18<br>
+    For real128 it is 8.50705917E+37<br>
+iii)For real32, maximum = 3.4028234664E+38, minimum = 1.4012984643E-45<br>
+    For real64, maximum = 2^1023, minimum = 2^(-1074)
+    For real128, maximum = 2^16383, minimum = 2^(-16494)
+iv)
 
 2.
 If we type cast an integer integer larger than 127 to the type int8 we will have an overflow and it would be truncated to 127. Similar for integers smaller than the lowest range of int8. If we put in an integer lower than -128 it will be truncated to -128.
