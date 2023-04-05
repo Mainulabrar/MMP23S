@@ -735,3 +735,37 @@ import random
 import matplotlib.pyplot as plt
 
 ngames = 100000
+wins_switch = 0
+wins_no_switch = 0
+
+for i in range(ngames):
+    # Set up the game
+    doors = ['goat', 'goat', 'prize']
+    random.shuffle(doors)
+    choice = random.randint(0, 2)
+    
+    # Host opens one of the other doors
+    open_door = [i for i in range(3) if i != choice and doors[i] == 'goat'][0]
+    
+    # Record results if contestant switches
+    switch_choice = [i for i in range(3) if i != choice and i != open_door][0]
+    if doors[switch_choice] == 'prize':
+        wins_switch += 1
+    
+    # Record results if contestant doesn't switch
+    if doors[choice] == 'prize':
+        wins_no_switch += 1
+
+# Calculate probabilities of winning
+prob_switch = wins_switch / ngames
+prob_no_switch = wins_no_switch / ngames
+
+# Plot results
+plt.bar(['Switch', 'No switch'], [prob_switch, prob_no_switch])
+plt.title('Monty Hall Simulation')
+plt.xlabel('Strategy')
+plt.ylabel('Probability of Winning')
+plt.show()
+```
+The output of the simulation shows that the probability of wining this game increases to 2/3 from 1/3 if I switch doors.
+
