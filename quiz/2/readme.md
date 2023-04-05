@@ -59,6 +59,7 @@ Fortran will ran faster. Because it has a different memory access pattern (colum
 18.
 
 19.
+In the first one.
 
 20.
 
