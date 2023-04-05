@@ -1,5 +1,5 @@
 1.
-i) This implies only certain real numbers can be stored in the computers. All real numbers can not be stored as they are continuous.
+i) This implies only certain real numbers can be stored in the computers. All real numbers can not be stored as they are continuous.<br>
 ii) real32 can present  -3.4 x 10^38 to 3.4 x 10^38 real bumbers.
     real64 can present -1.8 x 10^308 to 1.8 x 10^308 real numbers
     real128 can represent -1.2 x 10^4932 to 1.2 x 10^4932 real numbers
