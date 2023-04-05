@@ -59,7 +59,7 @@ Fortran will ran faster. Because it has a different memory access pattern (colum
 18.
 
 19.
-In the first one.
+In the first one. It is because how the matrices are read. As C stores matrices in a row major way the 1st program will be faster.
 
 20.
 
