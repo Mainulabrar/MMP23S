@@ -4,7 +4,7 @@ class func():
 		self.intercept = c0
 		self.slope = c1
 	def eval(x):
-		retun self.intercept + self.slope*x
+		return self.intercept + self.slope*x
 
 class Parabola(func):
 	def __init__(self, c0, c1, c2):
