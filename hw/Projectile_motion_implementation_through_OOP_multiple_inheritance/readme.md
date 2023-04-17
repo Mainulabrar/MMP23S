@@ -37,4 +37,10 @@ def getDiff(func, t, deltaT = 1.e-5):
     return (func.eval(t + deltaT) - func.eval(t)) / deltaT # finite differencing 
 
 print(getDiff(projLocX, t = 1), getDiff(projLocY, t = 1)) 
+
+class ProjLoc(ProjLocX,ProjLocY):
+    def __init__(self, x, y):
+        self.x = ProjLocX.eval
+        self.y = ProjLocY.eval
+        
 ```
