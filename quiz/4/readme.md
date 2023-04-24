@@ -54,3 +54,4 @@ plt.ylabel('Time (seconds)')
 plt.legend()
 plt.show()
 ```
+The binary search works better when the number of elements in the array is large, whereas the linear search works better where the number of elements in the array is small. This is because the binary search has fewer iterations.
