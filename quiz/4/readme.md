@@ -36,19 +36,19 @@ def benchmark(getBinFunc):
         edges = range(size)
         x = random.uniform(0, size - 1)
 
-        start_time = time.time()
+        startTime = time.time()
         getBinFunc(x, edges)
-        end_time = time.time()
+        endTime = time.time()
 
-        times.append(end_time - start_time)
+        times.append(endTime - startTime)
 
     return times
 
-linear_times = benchmark(getBinLinear)
-binary_times = benchmark(getBinBinary)
+linearTimes = benchmark(getBinLinear)
+binaryTimes = benchmark(getBinBinary)
 
-plt.plot(linear_times, label='Linear Search')
-plt.plot(binary_times, label='Binary Search')
+plt.plot(linearTimes, label='Linear Search')
+plt.plot(binaryTimes, label='Binary Search')
 plt.xlabel('Array Size')
 plt.ylabel('Time (seconds)')
 plt.legend()
