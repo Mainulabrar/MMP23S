@@ -56,6 +56,7 @@ for n in sizes:
     print(f"My time: {myTime:0.6f} seconds")
     print("-"*40)
 
+import matplotlib.pyplot as plt
 fig, ax=plt.subplots()
 ax.plot(sizes, myTimes, label = 'My Method')
 ax.plot(sizes, numpyTimes, label = 'NumPy Method')
