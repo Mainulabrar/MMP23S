@@ -125,3 +125,62 @@ print(f'The predicted temperature anomaly in 2050 is {yPred} °C')
 
 plt.show()
 ```
+Calculating the BIC
+
+```python
+import numpy as np
+from scipy.optimize import minimize
+
+# Load data from file
+data = np.loadtxt('https://www.cdslab.org/recipes/programming/regression-predicting-future-global-land-temperature-maxlikelihood/usaTemperatureHistory.txt', skiprows=70)
+
+# Define x-axis values as year + month/12
+xInit = data[:, 0] + (data[:, 1] - 1) / 12
+
+# Define y-axis values as monthly anomaly
+yInit = data[:, 2]
+
+mask = (xInit >= 1970) & (xInit <= 2013)
+x = xInit[mask]
+y = yInit[mask]
+
+# Define likelihood function for linear regression with Gaussian noise
+def likelihood_linear(params, x, y):
+    m, b, sigma = params
+    y_pred = m * x + b
+    residual = y - y_pred
+    log_likelihood = -0.5 * np.log(2 * np.pi * sigma ** 2) - 0.5 * residual ** 2 / sigma ** 2
+    return -np.sum(log_likelihood)
+
+# Fit linear model with Gaussian noise to data using maximum likelihood
+params_init = [0, 0, 1]
+result_linear = minimize(likelihood_linear, params_init, args=(x, y))
+m, b, sigma = result_linear.x
+
+# Calculate log-likelihood and BIC value for linear regression model
+log_likelihood_linear = -0.5 * np.sum(np.log(2 * np.pi * sigma ** 2) + ((y - (m * x + b)) / sigma) ** 2)
+n = len(x)
+k_linear = 3
+bic_linear = -2 * log_likelihood_linear + k_linear * np.log(n)
+
+# Define likelihood function for flat model with Gaussian noise
+def likelihood_flat(param, x, y):
+    mu, sigma = param
+    residual = y - mu
+    log_likelihood = -0.5 * np.log(2 * np.pi * sigma ** 2) - 0.5 * residual ** 2 / sigma ** 2
+    return -np.sum(log_likelihood)
+
+# Fit flat model with Gaussian noise to data using maximum likelihood
+param_init_flat = [np.mean(y), 1]
+result_flat = minimize(likelihood_flat, param_init_flat, args=(x, y))
+mu, sigma = result_flat.x
+
+# Calculate log-likelihood and BIC value for flat model
+log_likelihood_flat = -0.5 * np.sum(np.log(2 * np.pi * sigma ** 2) + ((y - mu) / sigma) ** 2)
+k_flat = 1
+bic_flat = -2 * log_likelihood_flat + k_flat * np.log(n)
+
+# Print the BIC values for both models
+print(f'BIC for linear regression model: {bic_linear:.2f}')
+print(f'BIC for flat model: {bic_flat:.2f}')
+```
