@@ -88,42 +88,43 @@ from scipy.optimize import minimize
 data = np.loadtxt('https://www.cdslab.org/recipes/programming/regression-predicting-future-global-land-temperature-maxlikelihood/usaTemperatureHistory.txt', skiprows=70)
 
 # Define x-axis values as year + month/12
-x = data[:, 0] + (data[:, 1] - 1) / 12
+xInit = data[:, 0] + (data[:, 1] - 1) / 12
 
 # Define y-axis values as monthly anomaly
-y = data[:, 2]
+yInit = data[:, 2]
 
-# Define likelihood function for linear regression
+mask = (xInit >= 1970) & (xInit <= 2013)
+x = xInit[mask]
+y = yInit[mask]
+# Define likelihood function for a flat line
 def likelihood(params, x, y):
-    intercept = params
-    yPred = intercept
-    residual = y - yPred
-    sigma = np.std(residual)
-    return -np.sum(np.log(1 / np.sqrt(2 * np.pi * sigma ** 2) * np.exp(-residual ** 2 / (2 * sigma ** 2))))
+    b, sigma = params
+    y_pred = b * np.ones_like(x)
+    residual = y - y_pred
+    log_likelihood = -0.5 * np.log(2 * np.pi * sigma ** 2) - 0.5 * residual ** 2 / sigma ** 2
+    return -np.sum(log_likelihood)
 
-# Fit line to data using maximum likelihood
-mask = (x >= 1970) & (x <= 2013)
-xFit = x[mask]
-yFit = y[mask]
-paramsInit = [0]
-result = minimize(likelihood, paramsInit, args=(xFit, yFit))
-intercept = result.x
+# Fit flat line model to data using maximum likelihood
+params_init = [np.mean(y), 1]
+result = minimize(likelihood, params_init, args=(x, y))
+b, sigma = result.x
 
-# Plot data and fitted line
-year = np.arange(1700, 2051, dtype=np.float64)
+# Plot data and fitted line with shaded uncertainty region
 plt.plot(x, y, label='Data')
-plt.plot(year, 0.0 * year + intercept, label='Fit')
+plt.plot(x, b * np.ones_like(x), label='Flat line fit')
+plt.fill_between(x, b - 2*sigma, b + 2*sigma, alpha=0.2, label='Uncertainty region')
 plt.xlabel('Year')
 plt.ylabel('Monthly anomaly (°C)')
 plt.title('Global land temperature anomaly')
 plt.legend()
 
-# Predict temperature anomaly in 2050
-xPred = 2050
-yPred = intercept
-print(f'The predicted temperature anomaly in 2050 is {yPred} °C')
+# Predict temperature anomaly in 2050 using flat line model
+x_pred = 2050
+y_pred = b
+print(f'The predicted temperature anomaly in 2050 using the flat line model is {y_pred:.2f} °C')
 
 plt.show()
+
 ```
 Calculating the BIC
 
