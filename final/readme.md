@@ -185,3 +185,15 @@ bic_flat = -2 * log_likelihood_flat + k_flat * np.log(n)
 print(f'BIC for linear regression model: {bic_linear:.2f}')
 print(f'BIC for flat model: {bic_flat:.2f}')
 ```
+
+The linear regression model fits the data better accordind to the BIC model
+
+```python
+BIC for linear regression model: 303.78
+BIC for flat model: 644.35
+```
+
+The global temperature anomaly prediction for the both models are:<br>
+
+Linear Regression Model: 1.91 °C
+Flat Model: 0.44 °C
