@@ -194,6 +194,7 @@ BIC for flat model: 644.35
 ```
 
 The global temperature anomaly prediction for the both models are:<br>
-
+```
 Linear Regression Model: 1.91 °C
 Flat Model: 0.44 °C
+```
